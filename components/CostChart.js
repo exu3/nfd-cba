@@ -6,7 +6,11 @@ import { fmtMoney, fmtMoneyShort } from "./Inputs";
 // = expected total 30-yr present-value cost. Lower is better.
 export default function CostChart({ results }) {
   const [hover, setHover] = useState(null);
-  const W = 720, rowH = 44, left = 300, right = 80, top = 8;
+  const W = 720,
+    rowH = 44,
+    left = 300,
+    right = 80,
+    top = 8;
   const H = top + results.length * rowH + 28;
   const max = Math.max(1, ...results.map((r) => r.totalPV));
   const x = (v) => (v / max) * (W - left - right);
@@ -15,34 +19,82 @@ export default function CostChart({ results }) {
   return (
     <div className="chart-wrap">
       <div className="legend">
-        <span><i style={{ background: "var(--series-1)" }} /> Alternative cost (capital + O&amp;M)</span>
-        <span><i style={{ background: "var(--series-2)" }} /> Expected cost of contamination events</span>
+        <span>
+          <i style={{ background: "var(--series-1)" }} /> Alternative cost
+          (capital + O&amp;M)
+        </span>
+        <span>
+          <i style={{ background: "var(--series-2)" }} /> Expected cleanup cost
+          of contamination events
+        </span>
       </div>
-      <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label="Expected total present-value cost by alternative">
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        width="100%"
+        role="img"
+        aria-label="Expected total present-value cost by alternative"
+      >
         {[0, 0.25, 0.5, 0.75, 1].map((f) => (
           <g key={f}>
-            <line x1={left + f * (W - left - right)} x2={left + f * (W - left - right)} y1={top} y2={H - 24} className="grid" />
-            <text x={left + f * (W - left - right)} y={H - 8} className="tick" textAnchor="middle">{fmtMoneyShort(f * max)}</text>
+            <line
+              x1={left + f * (W - left - right)}
+              x2={left + f * (W - left - right)}
+              y1={top}
+              y2={H - 24}
+              className="grid"
+            />
+            <text
+              x={left + f * (W - left - right)}
+              y={H - 8}
+              className="tick"
+              textAnchor="middle"
+            >
+              {fmtMoneyShort(f * max)}
+            </text>
           </g>
         ))}
         {results.map((r, i) => {
           const y = top + i * rowH + 10;
           const h = rowH - 20;
-          const w1 = x(r.ownPV), w2 = x(r.riskPV);
+          const w1 = x(r.ownPV),
+            w2 = x(r.riskPV);
           return (
             <g key={r.id}>
-              <text x={left - 10} y={y + h / 2 + 4} textAnchor="end" className="cat">{r.name}</text>
+              <text
+                x={left - 10}
+                y={y + h / 2 + 4}
+                textAnchor="end"
+                className="cat"
+              >
+                {r.name}
+              </text>
               {w1 > 0 && (
-                <rect x={left} y={y} width={Math.max(0, w1 - (w2 > 0 ? GAP : 0))} height={h} rx={w2 > 0 ? 0 : 4}
+                <rect
+                  x={left}
+                  y={y}
+                  width={Math.max(0, w1 - (w2 > 0 ? GAP : 0))}
+                  height={h}
+                  rx={w2 > 0 ? 0 : 4}
                   fill="var(--series-1)"
-                  onMouseEnter={() => setHover({ r, part: "own" })} onMouseLeave={() => setHover(null)} />
+                  onMouseEnter={() => setHover({ r, part: "own" })}
+                  onMouseLeave={() => setHover(null)}
+                />
               )}
               {w2 > 0 && (
-                <rect x={left + w1} y={y} width={w2} height={h} rx={4}
+                <rect
+                  x={left + w1}
+                  y={y}
+                  width={w2}
+                  height={h}
+                  rx={4}
                   fill="var(--series-2)"
-                  onMouseEnter={() => setHover({ r, part: "risk" })} onMouseLeave={() => setHover(null)} />
+                  onMouseEnter={() => setHover({ r, part: "risk" })}
+                  onMouseLeave={() => setHover(null)}
+                />
               )}
-              <text x={left + w1 + w2 + 6} y={y + h / 2 + 4} className="val">{fmtMoneyShort(r.totalPV)}</text>
+              <text x={left + w1 + w2 + 6} y={y + h / 2 + 4} className="val">
+                {fmtMoneyShort(r.totalPV)}
+              </text>
             </g>
           );
         })}

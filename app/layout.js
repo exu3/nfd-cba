@@ -1,8 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "NFD Source Protection — Cost/Benefit",
-  description: "Risk-weighted cost/benefit of source protection alternatives for the Norwich Fire District well",
+  title: "NFD SP Alternatives Cost/Benefit Analysis",
+  description:
+    "Risk-weighted cost/benefit of source protection alternatives for the NFD water source",
 };
 
 export default function RootLayout({ children }) {
