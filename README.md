@@ -8,7 +8,7 @@ Risk-weighted cost/benefit comparison of the Norwich Fire District capstone alte
 4. Buy & conserve the land (land trust)
 
 Hazards modeled: **PFAS reaching the well** (→ GAC treatment, permanent) and an
-**emergency rail spill**. A replacement well is not an option, so that is not modeled.
+**emergency transpo spill**. A replacement well is not an option, so that is not modeled.
 
 ## Run it
 
@@ -26,15 +26,15 @@ npm run test:model # checks the math without the browser
 source next to each number (vendor quote, DEC guidance, appraisal, etc.).
 Everything can also be changed live in the browser; use “Download scenario” to save a set.
 
-| Input | Meaning |
-|---|---|
-| `annualProbability` | Chance per year the hazard happens (0.02 = 2%/yr) |
-| `oneTimeCost` | Cost in the year it happens (GAC install, emergency response) |
-| `annualCostAfter` | Cost every year after (GAC media change-outs, extra sampling) |
-| `repeatable` | PFAS = false (once it's there, it's there); spills = true |
-| `capitalCost`, `annualOM` | What the alternative itself costs the District |
-| `likelihoodFactor` | How the alternative changes the hazard's probability (0.5 = halves it) |
-| `consequenceFactor` | How it changes the one-time cost (early warning → smaller emergency) |
+| Input                     | Meaning                                                                |
+| ------------------------- | ---------------------------------------------------------------------- |
+| `annualProbability`       | Chance per year the hazard happens (0.02 = 2%/yr)                      |
+| `oneTimeCost`             | Cost in the year it happens (GAC install, emergency response)          |
+| `annualCostAfter`         | Cost every year after (GAC media change-outs, extra sampling)          |
+| `repeatable`              | PFAS = false (once it's there, it's there); spills = true              |
+| `capitalCost`, `annualOM` | What the alternative itself costs the District                         |
+| `likelihoodFactor`        | How the alternative changes the hazard's probability (0.5 = halves it) |
+| `consequenceFactor`       | How it changes the one-time cost (early warning → smaller emergency)   |
 
 To add a hazard (e.g. a fuel spill from equipment storage), add an object to
 `DEFAULT_HAZARDS` and the UI picks it up automatically. Same for alternatives.
@@ -42,7 +42,7 @@ To add a hazard (e.g. a fuel spill from equipment storage), add an object to
 ## How the math works (`lib/model.js`)
 
 - **Alternative cost (PV)** = capital + annual O&M × PV annuity factor.
-- **Expected event cost (PV)**, for each hazard and year *t*:
+- **Expected event cost (PV)**, for each hazard and year _t_:
   - non-repeatable: P(first event in year t) = (1−p)^(t−1)·p
   - repeatable: P(event in year t) = p
   - × [one-time cost discounted to year t + ongoing costs discounted from t+1 to the horizon]
