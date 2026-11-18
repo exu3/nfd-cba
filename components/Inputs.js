@@ -1,9 +1,5 @@
 "use client";
 
-// Small, reusable inputs. `kind` controls display:
-//   "money"   -> $ with commas
-//   "percent" -> shown as %, stored as decimal (3 -> 0.03)
-//   "number"  -> plain
 export function NumberField({ label, value, onChange, kind = "number", step, hint }) {
   const shown = kind === "percent" ? +(value * 100).toFixed(4) : value;
   return (

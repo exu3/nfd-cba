@@ -3,7 +3,7 @@ import { useState } from "react";
 import { fmtMoney, fmtMoneyShort } from "./Inputs";
 
 // Horizontal stacked bars: the alternative's own cost + expected risk cost
-// = expected total 30-yr present-value cost. Lower is better.
+// = expected total 30-yr present-value cost.
 export default function CostChart({ results }) {
   const [hover, setHover] = useState(null);
   const W = 720,
