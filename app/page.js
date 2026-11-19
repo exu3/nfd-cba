@@ -90,7 +90,7 @@ export default function Home() {
           and a spill event from the transportation corridor. We did not
           consider contamination from road salt as it was not a primary concern.
           All costs are in 2026 dollars and are discounted to present value at
-          {settings.discountRate.toFixed(2)}% discount rate. In this model, each
+          {settings.discountRate.toFixed(2)} discount rate. In this model, each
           alternative can scale risk using a likelihood factor and scale
           remediation cost using a consequence factor. For example, likelihood
           of a contamination may decrease if a spill occurs on an impervious
