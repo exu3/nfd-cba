@@ -8,7 +8,7 @@ Risk-weighted cost/benefit comparison of the Norwich Fire District capstone alte
 4. Buy & conserve the land (land trust)
 
 Hazards modeled: **PFAS reaching the well** (→ GAC treatment, permanent) and an
-**emergency transpo spill**. A replacement well is not an option, so that is not modeled.
+**emergency transportation corridor spill**. A replacement well is not an option, so that is not modeled.
 
 ## Run it
 
@@ -52,10 +52,3 @@ To add a hazard (e.g. a fuel spill from equipment storage), add an object to
   spread (most futures have no event; a few are very expensive).
 
 Use a **real** discount rate (inflation removed) with costs in today's dollars.
-
-## Ideas to extend
-
-- A tornado chart: which single input swings the answer the most?
-- A break-even finder: “What PFAS probability makes monitoring worth it?”
-- Non-monetary criteria (public health, community values) as a weighted decision matrix next to the $ results.
-- Grants (e.g. DWSRF / land conservation funding) as a negative capital cost.
