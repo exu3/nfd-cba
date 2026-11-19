@@ -71,10 +71,36 @@ export default function Home() {
   return (
     <main>
       <header>
-        <h1>Norwich Fire District — Source Protection Cost/Benefit</h1>
+        <h1>Norwich Fire District Water Source Protection Cost Analysis</h1>
         <p className="sub">
           Risk-weighted, {settings.horizonYears}-year present-value comparison
-          of recommended alternatives. TODO: dropdown of assumptions
+          of recommended alternatives.
+        </p>
+        <h3>Overview</h3>
+        <p>
+          To compare recommended alternatives on cost and risk, we considered a
+          probabilistic cost model using a Monte Carlo simulation. Each
+          alternative has a known upfront cost, but the cost of remediation in
+          an unpreventable event may vary depending on when the contamination is
+          detected. The model runs {settings.monteCarloRuns.toLocaleString()}{" "}
+          possible futures over a {settings.horizonYears}-year horizon. In each
+          simulated year, a random draw is compared with each hazard’s
+          probability to decide whether the event occurs. The model considers
+          three hazards: PFAS reaching the well, a fuel or hydraulic oil spill,
+          and a spill event from the transportation corridor. We did not
+          consider contamination from road salt as it was not a primary concern.
+          All costs are in 2026 dollars and are discounted to present value at
+          {settings.discountRate.toFixed(2)}% discount rate. In this model, each
+          alternative can scale risk using a likelihood factor and scale
+          remediation cost using a consequence factor. For example, likelihood
+          of a contamination may decrease if a spill occurs on an impervious
+          surface because it is easier to clean up. On the other hand, the
+          consequence factor may be lower for monitoring wells because they
+          provide an early warning for remediation interventions.
+        </p>
+        <p>
+          Tune parameters below to see how results change. Export options are
+          downloading scenario settings as JSON or downloading charts as PNG.
         </p>
         <div className="actions">
           <button onClick={reset}>Reset to defaults</button>
