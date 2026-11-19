@@ -1,0 +1,22 @@
+Spill#,Year,Complaint#,Facility Name,Address,Town,Nature of Incident,Product Contaminants,Quantity,Responsible Party,Date Reported,Date Closed,Matched Road,Quantity (max gal),Quantity Note
+1997WMD003,1997,WMD003,Agway Energy,Route 5,Norwich,Saddle Tank Leak Overnight,"Diesel, diesel",100 Gallons,Crete Carrier Corp,1/7/1997 12:00:00 AM,1/8/1997 12:00:00 AM,US-5,100,
+2006WMD521,2006,WMD521,Bailey Residence,Rt 5,Norwich,concerned her well is contaminated,,,,9/13/2006 12:00:00 AM,11/13/2006 12:00:00 AM,US-5,,unknown quantity
+2004WMD176,2004,WMD176,Everett Poisson,#1 Norwich Meadows -Rt 5,Norwich,oil in sump,#2,,,5/17/2004 12:00:00 AM,9/1/2004 12:00:00 AM,US-5,,unknown quantity
+1997WMD184,1997,WMD184,Farrell Gravel Pit,Rt 5,Norwich,Excavator Hose Failure,Hydraulic Oil,25 Gallons,,5/22/1997 12:00:00 AM,10/9/1998 12:00:00 AM,US-5,25,
+2000WMD327,2000,WMD327,Farrells gravel pit,Rt 5,Norwich,hydraulic line rupture,hydraulic oil,5 Gallons,James Morrell,8/22/2000 12:00:00 AM,8/23/2000 12:00:00 AM,US-5,5,
+2016WMD242,2016,WMD242,Freeman Property,651 Union Village Rd,Norwich,slow drip,#2 Fuel Oil,<2 Gallons,Carole Freeman,6/3/2016 12:00:00 AM,12/30/2016 12:00:00 AM,Union Village Rd,2,upper bound only (<2 gal)
+1998WMD353,1998,WMD353,Jake Guest farm,Butternut Lane,Norwich,above ground tank punctured,"diesel, diesel",200 Gallons,Jake Guest,9/11/1998 12:00:00 AM,9/15/1998 12:00:00 AM,Butternut Rd/Ln,200,
+1980105,1980,105,,I-91,Norwich,Truck Accident,"Asbestos, Asbestos",1 Cubic Yards,Mcmahon Transport,8/25/1980 12:00:00 AM,1/1/2000 12:00:00 AM,I-91,,"soil volume (cubic yards), not comparable to gallons"
+1995WMD151,1995,WMD151,,"B And M Rr Tracks, Rt 5",Norwich,Oily Residue Found By Switcher,Oily Residue,,,5/25/1995 12:00:00 AM,6/1/1995 12:00:00 AM,US-5,,unknown quantity
+2005WMD311,2005,WMD311,,Interstate 91   Exit 13,Norwich,backhoe  overturned,"diesel, diesel",50 Gallons,ECI Construction - Ken Pigeon,9/1/2005 12:00:00 AM,1/18/2007 12:00:00 AM,I-91,50,
+2008WMD101,2008,WMD101,,1116 Rte 5N,Norwich,vehicle accident,"gasoline, Gasoline",10 Gallons,,2/22/2008 12:00:00 AM,2/22/2008 12:00:00 AM,US-5,10,
+2008WMD568,2008,WMD568,north of village,1528 Rte 5,Norwich,vehicle accident,engine oil/anti-freeze,,,11/25/2008 12:00:00 AM,11/25/2008 12:00:00 AM,US-5,,unknown quantity
+2002WMD088,2002,WMD088,Norwich Water Dept,635 Rt 5 N,Norwich,overflow shutoff failure,4% sodium flouride,197 Gallons,Norwich Water Dept,3/8/2002 12:00:00 AM,3/8/2002 12:00:00 AM,US-5,197,
+1998WMD135,1998,WMD135,Peacock Residence,Rt 5,Norwich,Above Ground Tank Leak,"Kerosene, Kerosene",,Nancy Peacock,4/10/1998 12:00:00 AM,1/5/1999 12:00:00 AM,US-5,,unknown quantity
+2022WMD002,2022,WMD002,Residence,239 Goodrich Four Corners Rd.,Norwich,leaking pump on delivery truck.,#2 Fuel Oil,<2 Gallons,Irving Energy,1/3/2022 12:00:00 AM,1/3/2022 12:00:00 AM,Goodrich Four Corners,2,upper bound only (<2 gal)
+2013WMD522,2013,WMD522,Roadside,mm 73 I-91 northbound,Norwich,"Tractor Trailer accident, saddle tanks ruptured.",Diesel,100-200 Gallons,Aubuchon Hardware,11/12/2013 12:00:00 AM,2/11/2014 12:00:00 AM,I-91,200,
+2018WMD332,2018,WMD332,roadway,301 RT 5 N to 256 RT 5 N,Norwich,hydraulic reservoir failed,Hydraulic Oil,25 Gallons,"Casella Waste Management, Inc.",8/1/2018 12:00:00 AM,8/3/2018 12:00:00 AM,US-5,25,
+2025WMD575,2025,WMD575,Roadway,Route 5 NB under bridge #49 of I-91,Norwich,Hydraulic Equipment Failure,Hydraulic Oil,< 10 Gallons,Jim Eastman Trucking & Excavation,12/1/2025 12:00:00 AM,12/1/2025 12:00:00 AM,US-5; I-91,10,upper bound only (<10 gal)
+2024WMD130,2024,WMD130,roadway of exit ramp,I 91 NB exit 13 ramp,Norwich,"Vehicle/Equipment accident, vehicle fluids lost",Unknown/unspecified Petroleum,40 Gallons,unknown,3/8/2024 12:00:00 AM,5/29/2024 12:00:00 AM,I-91,40,
+2000WMD152,2000,WMD152,Schierer Residence,Union Village rd,Norwich,spill during delivery,#2,2 Gallons,Johnson and Dix,4/21/2000 12:00:00 AM,4/21/2000 12:00:00 AM,Union Village Rd,2,
+2026WMD380,2026,WMD380,Unnamed Pond,Jct Goodrich Four Corners/Route 5,Norwich,Vehicle/Equipment in surface water,Gasoline,Unknown Gallons,Mark Avery,8/4/2026 12:00:00 AM,8/4/2026 12:00:00 AM,US-5; Goodrich Four Corners,,unknown quantity
