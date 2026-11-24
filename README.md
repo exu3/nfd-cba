@@ -8,7 +8,7 @@ Risk-weighted cost/benefit comparison of the Norwich Fire District capstone alte
 4. Buy & conserve the land (land trust)
 
 Hazards modeled: **PFAS reaching the well** (→ GAC treatment, permanent) and an
-**emergency transportation corridor spill**. A replacement well is not an option, so that is not modeled.
+**emergency trans_accidentrtation corridor spill**. A replacement well is not an option, so that is not modeled.
 
 ## Run it
 

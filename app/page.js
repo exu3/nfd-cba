@@ -17,6 +17,7 @@ export default function Home() {
   const [settings, setSettings] = useState(clone(DEFAULT_SETTINGS));
   const [hazards, setHazards] = useState(clone(DEFAULT_HAZARDS));
   const [alts, setAlts] = useState(clone(DEFAULT_ALTERNATIVES));
+  const [copied, setCopied] = useState(false);
 
   const results = useMemo(
     () =>
@@ -66,6 +67,52 @@ export default function Home() {
     a.click();
   };
 
+  const copyTableAsCsv = async () => {
+    // quote any cell that contains a comma, quote, or line break
+    const esc = (v) => {
+      const s = String(v ?? "");
+      return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+    };
+
+    const header = [
+      "Alternative",
+      "Alt. cost (PV $)",
+      "Expected event cost (PV $)",
+      "Expected total (PV $)",
+      "Benefit vs. do nothing ($)",
+      "Net benefit ($)",
+      "B/C ratio",
+      ...hazards.map((h) => `P(${h.id}) in ${settings.horizonYears} yr (%)`),
+    ];
+
+    const rows = results.map((r) => [
+      r.name,
+      Math.round(r.ownPV),
+      Math.round(r.riskPV),
+      Math.round(r.totalPV),
+      Math.round(r.benefit),
+      Math.round(r.netBenefit),
+      r.bcRatio == null ? "" : r.bcRatio.toFixed(2),
+      ...r.byHazard.map((h) => (h.probAtLeastOnce * 100).toFixed(1)),
+    ]);
+
+    const csv = [header, ...rows]
+      .map((row) => row.map(esc).join(","))
+      .join("\n");
+
+    try {
+      await navigator.clipboard.writeText(csv);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard blocked (e.g. not on localhost/https): download a file instead
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+      a.download = "nfd-results.csv";
+      a.click();
+    }
+  };
+
   const best = [...results].sort((a, b) => a.totalPV - b.totalPV)[0];
 
   return (
@@ -78,25 +125,26 @@ export default function Home() {
         </p>
         <h3>Overview</h3>
         <p>
-          To compare recommended alternatives on cost and risk, we considered a
-          probabilistic cost model using a Monte Carlo simulation. Each
-          alternative has a known upfront cost, but the cost of remediation in
-          an unpreventable event may vary depending on when the contamination is
-          detected. The model runs {settings.monteCarloRuns.toLocaleString()}{" "}
-          possible futures over a {settings.horizonYears}-year horizon. In each
-          simulated year, a random draw is compared with each hazard’s
-          probability to decide whether the event occurs. The model considers
-          three hazards: PFAS reaching the well, a fuel or hydraulic oil spill,
-          and a spill event from the transportation corridor. We did not
-          consider contamination from road salt as it was not a primary concern.
-          All costs are in 2026 dollars and are discounted to present value at
-          {settings.discountRate.toFixed(2)} discount rate. In this model, each
-          alternative can scale risk using a likelihood factor and scale
-          remediation cost using a consequence factor. For example, likelihood
-          of a contamination may decrease if a spill occurs on an impervious
-          surface because it is easier to clean up. On the other hand, the
-          consequence factor may be lower for monitoring wells because they
-          provide an early warning for remediation interventions.
+          Found below is a probabilistic cost model using a Monte Carlo
+          simulation. Each alternative has a known upfront cost, but the cost of
+          remediation in an unpreventable event may vary depending on when the
+          contamination is detected. The model runs{" "}
+          {settings.monteCarloRuns.toLocaleString()} possible futures over a{" "}
+          {settings.horizonYears}-year horizon. In each simulated year, a random
+          draw is compared with each hazard’s probability to decide whether the
+          event occurs. The model considers three hazards: PFAS reaching the
+          well, a fuel or hydraulic oil spill, and a spill event from the
+          transportation corridor. Cost listed is the present value of capital
+          plus {settings.horizonYears} years of O&M at a{" "}
+          {settings.discountRate.toFixed(2)} discount rate.
+        </p>
+        <p>
+          In this model, each alternative can scale risk using a likelihood
+          factor and scale remediation cost using a consequence factor. For
+          example, likelihood of a contamination may decrease if a spill occurs
+          on an impervious surface because it is easier to clean up. On the
+          other hand, the consequence factor may be lower for monitoring wells
+          because they provide an early warning for remediation interventions.
         </p>
         <p>
           Tune parameters below to see how results change. Export options are
@@ -130,7 +178,19 @@ export default function Home() {
         </h3>
         <RangeChart results={results} />
 
-        <h3>Table</h3>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <h3>Table</h3>
+          <button onClick={copyTableAsCsv}>
+            {copied ? "Copied!" : "Copy table as CSV"}
+          </button>
+        </div>
+
         <div className="table-scroll">
           <table>
             <thead>
